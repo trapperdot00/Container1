@@ -1,21 +1,22 @@
 class Container
 {
 public:
-    Container(const unsigned& len, const unsigned& val);
-    Container(const unsigned& len) : Container(len, 0) {}
-    Container() : Container(0, 0) {}
+    Container(const int& len, const int& val);
+    Container(const int& len) : Container(len, 0) {}
 
-    int& getValue() { return value; }
-    const int& getCValue() const { return value; }
+    int& value() { return _value; }
+    const int& cvalue() const { return _value; }
+    const int& length() const { return _length; }
 
-    Container& getElement(const int&);
-    const Container& getCElement(const int&) const;
-
-    int& getValueAt(const int& n) { return getElement(n).getValue(); }
-    const int& getCValueAt(const int& n) const { return getCElement(n).getCValue(); }
+    int& getValueAt(const int& n) { return getElement(n)->value(); }
+    const int& getCValueAt(const int& n) const { return getCElement(n)->cvalue(); }
 
 private:
+    Container* getElement(const int&);
+    const Container* getCElement(const int&) const;
 
-    int value;
+    int _value;
+    int _length;
     Container* next;
 };
+

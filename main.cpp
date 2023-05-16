@@ -8,11 +8,11 @@ using std::endl;
 using std::cin;
 using std::to_string;
 
-void print(const Container& con, const unsigned& sz)
+void print(const Container& con)
 {
     cout << "Elements: ";
     string fullPrint;
-    for (unsigned u = 0; u != sz; ++u) {
+    for (int u = 0; u != con.length(); ++u) {
         fullPrint += to_string(con.getCValueAt(u)) + " ";
     }
     cout << fullPrint << "\n" << endl;
@@ -30,8 +30,7 @@ int main()
 {
     unsigned ctrSize = getSize();
     Container ctr(ctrSize);
-    print(ctr, ctrSize);
-
+    print(ctr);
     int index, newVal;
     bool goodInput = true;;
     while (goodInput)
@@ -42,7 +41,7 @@ int main()
             goodInput = false;
         else {
             ctr.getValueAt(index) = newVal;
-            print(ctr, ctrSize);
+            print(ctr);
         }
     }
     return 0;
